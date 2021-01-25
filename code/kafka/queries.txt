@@ -1,0 +1,13 @@
+#ksql query editor
+# Alle messages aus "play-events" ausgeben
+PRINT "play-events";
+# Alle messages aus "song-feed" ausgeben
+PRINT "song-feed" FROM BEGINNING;
+### Konsole
+# Get all topics
+curl -sXGET http://localhost:7070/kafka-music/instances
+# Get the latest Top 5:
+curl -sXGET http://localhost:7070/kafka-music/charts/top-five
+
+### Create Stream via Dashboard
+Click on 

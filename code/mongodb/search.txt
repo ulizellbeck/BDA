@@ -1,0 +1,14 @@
+# Find documents whose "borough" field equals "Manhattan"
+{"borough":"Manhattan"}
+# Find restaurants with the zip code 10075
+{"address.zipcode":"10075"}
+# Find restaurants that are graded as "B"
+{"grades.grade":"B"}
+# Find restaurants where the score is greater than 30
+{"grades.score":{$gt:30}}
+# Find restaurants where the score is less than 10
+{"grades.score":{$lt:10}}
+# Find restaurants with italian cuisine and with zip code 10075
+{"cuisine":"Italian","address.zipcode":"10075"}
+# Find restaurants with italian cuisine or with zip code 10075
+{$or:[{"cuisine":"Italian"},{"address.zipcode":"10075"}]}

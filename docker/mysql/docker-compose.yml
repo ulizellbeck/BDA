@@ -1,0 +1,21 @@
+version: '3.5'
+
+services:
+  db:
+    image: mysql:5.7
+    #restart: always
+    command: --init-file /docker-entrypoint-initdb.d/sample.sql
+    environment:
+      MYSQL_ROOT_PASSWORD: 'college'
+      MYSQL_USER: 'root'
+      MYSQL_PASSWORD: 'pass'
+      MYSQL_DATABASE: 'classicmodels'
+    volumes:
+      - ./docker-sample.sql:/docker-entrypoint-initdb.d/sample.sql
+      - db-data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+volumes:
+  db-data:
+    {}

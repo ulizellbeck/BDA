@@ -1,0 +1,32 @@
+# Lassen Sie sich alle  Nachnamen (lastName) ihrer Mitarbeiter (employee) anzeigen
+SELECT lastName
+FROM employees;
+# Lassen Sie sich alle  Nachnamen (lastName), Vornamen (firstname) und Anstellung (jobtitle) ihrer Mitarbeiter (employee) anzeigen
+SELECT
+    lastname,
+    firstname,
+    jobtitle
+FROM
+    employees;
+
+# Lassen Sie sich alle Nachnamen, Vornamen und Anstellung von Mitarbeitern anzeigen, die als Sales Rep angestellt sind (jobtitle)
+    SELECT
+        lastname,
+        firstname,
+        jobtitle
+    FROM
+        employees
+    WHERE
+        jobtitle = 'Sales Rep';
+
+# Lassen Sie sich nur die Sales-Mitarbeiter anzeigen, die im 1er Office (officeCode = 1) angestellt sind
+SELECT
+    lastname,
+    firstname,
+    jobtitle,
+    officeCode
+FROM
+    employees
+WHERE
+    jobtitle = 'Sales Rep' AND
+    officeCode = 1;

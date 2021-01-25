@@ -1,0 +1,58 @@
+* Docker (https://docs.docker.com/docker-for-windows/install/)
+* GitBash (https://gitforwindows.org/)
+* Atom // Notepad ++
+* DBeaver
+* MongoDB Compass
+
+------ Hadoop ---------
+* Skript (Hortonworks) ausführen
+* Login: http://localhost:4200/ -> root:hadoop
+* Shell: ambari-admin-password-reset
+* shell: sudo yum install -y nano
+* Shell: chmod +x /tmp/mapper.py
+* Shell: chmod +x /tmp/reducer.py
+* mapper.py, reducer.py nach /tmp/ in sandbox-hdp laden
+docker cp Documents/work/Software/Big\ Data\ Architekturen/code/hadoop/mapper.py sandbox-hdp:/tmp
+
+
+* docker run sandbox-hdp
+* docker run sandbox-proxy
+
+----- HDFS -------------
+Ambari öffnen: http://localhost:8080
+Einloggen: maria_dev, maria_dev
+Dateien "gutenberg1.txt" über Ambaria hochladen
+
+
+----- MapReduce --------
+Einloggen in Docker-console (sandbox-hdp)
+echo "foo foo quux labs foo bar quux" | /tmp/mapper.py
+hadoop jar /usr/hdp/3.0.1.0-187/hadoop-mapreduce/hadoop-streaming-3.1.1.3.0.1.0-187.jar -file /tmp/mapper.py    -mapper /tmp/mapper.py -file /tmp/reducer.py   -reducer /tmp/reducer.py -input /user/maria_dev/gutenberg1.txt -output /user/maria_dev/gutenberg-output
+
+docker stop sandbox-hdp
+docker stop sandbox-proxy
+
+----- Spark -----------
+https://community.cloud.databricks.com/login.html
+Tag 1 dbc (RDD, Data Frames)
+
+------ Cassandra -------
+* docker-compose -f docker-compose.yml -f docker-compose.studio.yml up -d --scale node=1
+* bin bash in den Container
+* (https://docs.datastax.com/en/dse/6.0/dse-dev/datastax_enterprise/spark/sparkWeatherSensorDemo.html)
+* cd installation_location/demos/weather_sensors && bin/create-and-load
+
+docker-compose down
+docker-compose -f docker-compose.studio.yml down
+
+------ Mongo DB ---------
+* docker-compose up
+* Demo & Test über MongoDB Community Edition
+
+
+----- Kafka -------------
+* docker-compose up
+* docker-compose exec ksqldb-cli ksql http://ksqldb-server:8088
+* RUN SCRIPT '/tmp/statements.sql';
+* CTRL+D
+http://localhost:9021/clusters
